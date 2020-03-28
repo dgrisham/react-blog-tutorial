@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import '../resources/scss/style.scss';
 
-export default ReactDOM.render(
+ReactDOM.render(
   <p>Hello World</p>,
   document.getElementById('root'),
 );
