@@ -8,24 +8,24 @@ router.post('/', (req, res, next) => {
   if (!body.title) {
     return res.status(422).json({
       errors: {
-        title: 'is required';
-      };
+        title: 'is required',
+      },
     });
   }
 
   if (!body.author) {
     return res.status(422).json({
       errors: {
-        author: 'is required';
-      };
+        author: 'is required',
+      },
     });
   }
 
   if (!body.body) {
     return res.status(422).json({
       errors: {
-        body: 'is required';
-      };
+        body: 'is required',
+      },
     });
   }
 
@@ -35,10 +35,11 @@ router.post('/', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/', (res, req, next) => {
+router.get('/', (req, res, next) => {
   return Articles.find()
     .sort({ createdAt: 'descending' })
     .then((articles) => res.json({ articles: articles.map(article => article.toJSON()) }))
+    .catch(next);
 });
 
 router.param('id', (req, res, next, id) => {
@@ -74,7 +75,7 @@ router.patch('/:id', (req, res, next) => {
   }
 
   return req.article.save()
-    .then(() => req.json({ article: req.article.toJSON() }))
+    .then(() => res.json({ article: req.article.toJSON() }))
     .catch(next);
 })
 
