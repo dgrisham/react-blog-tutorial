@@ -29,7 +29,7 @@ mongoose.set('debug', true);
 // add models
 require('./models/Articles');
 // add routes
-// app.use(require('./routes'));
+app.use(require('./routes'));
 
 app.use((req, res, next) => {
   const err = new Error('Not Found');
